@@ -8,6 +8,10 @@ import IncentivesSection from "@/components/sections/IncentivesSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import DeploymentSection from "@/components/sections/DeploymentSection";
 import ContactSection from "@/components/sections/ContactSection";
+import AboutPage from "@/components/sections/AboutUs";
+import AboutUs from "@/components/sections/AboutUs";
+import GalleryPage from "@/components/sections/GalleryPage";
+import TestimonialSection from "@/components/sections/TestimonialSection";
 
 export default function Home() {
   return (
@@ -21,6 +25,9 @@ export default function Home() {
       <IncentivesSection />
       <IndustriesSection />
       <DeploymentSection />
+      <GalleryPage/>
+      <AboutUs />
+      <TestimonialSection/>
       <ContactSection />
     </>
   );
