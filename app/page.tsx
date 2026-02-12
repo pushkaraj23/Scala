@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <HeroSection />
       <ProblemSection />
-      <CustomerDilemma />
+      {/* <CustomerDilemma /> */}
       <SolutionSection />
       <FeaturesSection />
       <DistributionFlow />

@@ -176,7 +176,7 @@ export default function DeploymentSection() {
     <section
       ref={ref}
       id="deployment"
-      className="relative py-15 sm:py-15 lg:py-15 overflow-hidden bg-gradient-to-t from-[#cdfa8d] via-[#086729] to-[#084842]"
+      className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-t from-[#cdfa8d] via-[#086729] to-[#084842]"
     >
       {/* Premium overlay effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20" aria-hidden />
