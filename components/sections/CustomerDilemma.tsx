@@ -137,13 +137,13 @@ export default function CustomerDilemma() {
     <section
       ref={ref}
       id="dilemma"
-      className="relative py-15 sm:py-15 lg:py-15 overflow-hidden bg-gradient-to-l from-[#ffffff] via-[#aff840] to-[#6cb400]"
+      className="relative py-15 sm:py-15 lg:py-15 overflow-hidden bg-gradient-to-l from-[color:var(--color-background)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)]"
     >
       {/* Premium gradient overlays for depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/20" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#a3e635_0%,_transparent_50%)] opacity-30" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_#fef08a_0%,_transparent_50%)] opacity-40" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#bef264_0%,_transparent_40%)] opacity-20" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-primary-soft)_0%,_transparent_50%)] opacity-30" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--color-primary)_0%,_transparent_50%)] opacity-40" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-accent)_0%,_transparent_40%)] opacity-20" aria-hidden />
       
       {/* Subtle texture overlay */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)"/%3E%3C/svg%3E")' }} aria-hidden />

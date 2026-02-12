@@ -7,8 +7,12 @@ import { Menu, X } from "lucide-react";
 const navItems = [
     { label: "Solution", href: "#solution" },
     { label: "Features", href: "#features" },
+    { label: "Demo", href: "#demo" },
+    { label: "Pricing", href: "#pricing" },
     { label: "Industries", href: "#industries" },
-    { label: "Deployment", href: "#deployment" },
+    { label: "Integrations", href: "#integrations" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "FAQs", href: "#faqs" },
     { label: "Contact", href: "#contact" },
 ];
 
@@ -42,7 +46,7 @@ export default function Header() {
 
                         <a
                             href="#contact"
-                            className="ml-4 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-[color:var(--color-primary)] text-white hover:bg-[color:var(--color-primary-dark)] shadow-sm shadow-[color:var(--color-primary)]/30 transition"
+                            className="ml-4 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-[color:var(--color-primary)] text-background hover:bg-[color:var(--color-primary-dark)] shadow-sm shadow-[color:var(--color-primary)]/30 transition"
                         >
                             Request Demo
                         </a>

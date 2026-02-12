@@ -122,14 +122,24 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Factory, Warehouse, Truck, Store, User, ArrowRight } from "lucide-react";
+import { Building2, Factory, Warehouse, Truck, Store, User, ArrowRight } from "lucide-react";
 
 const flow = [
-  { icon: Factory, label: "Manufacturer", sub: "Demand & products with QR tagging", color: "from-green-600 to-emerald-600" },
-  { icon: Warehouse, label: "Brand Warehouse", sub: "QR-verified inventory", color: "from-lime-600 to-green-600" },
-  { icon: Truck, label: "Super Stockist", sub: "Live stock visibility to dealers", color: "from-emerald-600 to-teal-600" },
-  { icon: Store, label: "Dealer", sub: "Orders & sells via platform", color: "from-green-600 to-lime-600" },
-  { icon: User, label: "Plumber / Influencer", sub: "Scans for rewards", color: "from-lime-600 to-yellow-500" },
+  { icon: Building2, label: "Brand", sub: "Source & product management" },
+  { icon: Factory, label: "Manufacturer", sub: "Demand & products with QR tagging" },
+  { icon: Warehouse, label: "Warehouse", sub: "QR-verified inventory" },
+  { icon: Truck, label: "Super Stockist", sub: "Live stock visibility to dealers" },
+  { icon: Store, label: "Dealer", sub: "Orders & sells via platform" },
+  { icon: User, label: "Plumber", sub: "Scans for rewards & incentives" },
+];
+
+const scalaConnects = [
+  { step: 1, title: "QR Code Generation", desc: "Unique QR code for each product" },
+  { step: 2, title: "Scan at Every Transfer", desc: "QR code scanned at each handoff" },
+  { step: 3, title: "Real-Time Updates", desc: "Sync to central cloud platform" },
+  { step: 4, title: "Automated Incentives", desc: "Loyalty points credited instantly" },
+  { step: 5, title: "Fraud Prevention", desc: "Validates every scan" },
+  { step: 6, title: "Analytics & Insights", desc: "Actionable insights for decisions" },
 ];
 
 const container = {
@@ -171,13 +181,13 @@ export default function DistributionFlow() {
     <section
       ref={ref}
       id="flow"
-      className="relative py-15 sm:py-15 lg:py-15 overflow-hidden bg-gradient-to-l from-[#ffffff] via-[#c4ff6b] to-[#73b313]"
+      className="relative py-15 sm:py-15 lg:py-15 overflow-hidden bg-gradient-to-l from-[color:var(--color-background)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)]"
     >
       {/* Premium gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/30" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_#a3e635_0%,_transparent_50%)] opacity-30" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_#fef08a_0%,_transparent_50%)] opacity-40" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#bef264_0%,_transparent_50%)] opacity-20" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--color-background)]/70 via-transparent to-[color:var(--color-surface)]/80" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--color-primary-soft)_0%,_transparent_50%)] opacity-40" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-primary)_0%,_transparent_50%)] opacity-35" aria-hidden />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-accent)_0%,_transparent_50%)] opacity-25" aria-hidden />
 
       {/* Subtle texture */}
       <div 
@@ -206,7 +216,7 @@ export default function DistributionFlow() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/4 -left-32 w-80 h-80 bg-gradient-to-br from-lime-300 to-green-400 rounded-full blur-[100px]"
+        className="absolute top-1/4 -left-32 w-80 h-80 bg-[radial-gradient(circle_at_center,var(--color-primary)_0%,transparent_70%)] rounded-full blur-[100px]"
         aria-hidden
       />
       <motion.div
@@ -220,7 +230,7 @@ export default function DistributionFlow() {
           ease: "easeInOut",
           delay: 2,
         }}
-        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-gradient-to-br from-yellow-200 to-lime-300 rounded-full blur-[120px]"
+        className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[radial-gradient(circle_at_center,var(--color-primary-soft)_0%,transparent_70%)] rounded-full blur-[120px]"
         aria-hidden
       />
       <motion.div
@@ -234,7 +244,7 @@ export default function DistributionFlow() {
           ease: "easeInOut",
           delay: 4,
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-green-300 to-emerald-400 rounded-full blur-[150px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,var(--color-accent)_0%,transparent_70%)] rounded-full blur-[150px]"
         aria-hidden
       />
 
@@ -278,14 +288,14 @@ export default function DistributionFlow() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 border border-green-300/50 backdrop-blur-sm shadow-lg shadow-green-500/10 mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-background)]/80 border border-[color:var(--color-primary)]/40 backdrop-blur-sm shadow-lg shadow-[color:var(--color-primary)]/15 mb-6"
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-600"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-primary)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-primary)]"></span>
               </span>
-              <span className="text-green-800 text-xs sm:text-sm font-semibold tracking-wide uppercase">
-                End to End Distribution Flow
+              <span className="text-[color:var(--color-foreground)] text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                Distribution Ecosystem
               </span>
             </motion.div>
 
@@ -294,11 +304,11 @@ export default function DistributionFlow() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight mb-6"
             >
-              <span className="text-gray-900">From manufacturer </span>
-              <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-lime-600 bg-clip-text text-transparent">
-                to last mile
+              <span className="text-[color:var(--color-foreground)]">End-to-End </span>
+              <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                Distribution Flow
               </span>
             </motion.h2>
             
@@ -307,9 +317,9 @@ export default function DistributionFlow() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-lg sm:text-xl text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              className="text-lg sm:text-xl text-[color:var(--color-text-secondary)] max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Every movement is captured, verified, and visible — from production to plumber.
+              Six-tier seamless integration from brand to end-user
             </motion.p>
 
             {/* Stats row */}
@@ -346,29 +356,29 @@ export default function DistributionFlow() {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="relative rounded-3xl border border-white/60 bg-white/50 backdrop-blur-xl p-3 shadow-2xl shadow-green-500/20"
+              className="relative rounded-3xl border border-[color:var(--color-border)] bg-[color:var(--color-background)]/90 backdrop-blur-xl p-3 shadow-2xl shadow-[color:var(--color-accent-dark)]/30"
             >
               {/* Glow border */}
-              <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-green-400/50 via-transparent to-lime-400/50 opacity-80" />
+              <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-[color:var(--color-primary)]/40 via-transparent to-[color:var(--color-accent)]/40 opacity-80" />
               
               {/* Inner container */}
-              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-white/80 to-green-50/80 p-1">
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[color:var(--color-background)]/90 to-[color:var(--color-surface)]/90 p-1">
                 {/* Top bar */}
-                <div className="flex items-center gap-2 px-4 py-3 bg-white/60 backdrop-blur-sm rounded-t-xl border-b border-green-100">
+                <div className="flex items-center gap-2 px-4 py-3 bg-[color:var(--color-surface)]/90 backdrop-blur-sm rounded-t-xl border-b border-[color:var(--color-border)]">
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                    <div className="w-3 h-3 rounded-full bg-[color:var(--color-error)]" />
+                    <div className="w-3 h-3 rounded-full bg-[color:var(--color-warning)]" />
+                    <div className="w-3 h-3 rounded-full bg-[color:var(--color-success)]" />
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <div className="px-4 py-1 rounded-lg bg-green-50 border border-green-200 text-xs text-green-700 font-medium">
+                    <div className="px-4 py-1 rounded-lg bg-[color:var(--color-background)] border border-[color:var(--color-border)] text-xs text-[color:var(--color-foreground)] font-medium">
                       scala-flow.app
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative bg-gradient-to-br from-green-50/50 to-lime-50/50 rounded-b-xl p-4 sm:p-6">
+                <div className="relative bg-gradient-to-br from-[color:var(--color-background)]/90 to-[color:var(--color-surface)]/90 rounded-b-xl p-4 sm:p-6">
                   <Image
                     src="/globe.svg"
                     alt="Global distribution visibility"
@@ -393,9 +403,9 @@ export default function DistributionFlow() {
           className="relative"
         >
           {/* Connection line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-green-200 via-lime-300 to-yellow-200 rounded-full -translate-y-1/2 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[color:var(--color-background)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] rounded-full -translate-y-1/2 z-0" />
           
-          <div className="relative z-10 flex flex-wrap justify-center gap-4 lg:gap-0 lg:grid lg:grid-cols-5">
+          <div className="relative z-10 flex flex-wrap justify-center gap-4 lg:gap-0 lg:grid lg:grid-cols-6">
             {flow.map((node, i) => (
               <motion.div
                 key={i}
@@ -414,14 +424,14 @@ export default function DistributionFlow() {
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <ArrowRight className="w-6 h-6 text-green-500" />
+                      <ArrowRight className="w-6 h-6 text-[color:var(--color-primary)]" />
                     </motion.div>
                   </div>
                 )}
 
-                <div className="relative rounded-2xl border border-white/60 bg-white/70 backdrop-blur-xl p-6 sm:p-8 min-w-[160px] sm:min-w-[180px] transition-all duration-300 hover:bg-white/90 hover:border-green-300 hover:shadow-2xl hover:shadow-green-500/20 group-hover:border-green-400">
+                <div className="relative rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-background)]/95 backdrop-blur-xl p-6 sm:p-8 min-w-[160px] sm:min-w-[180px] transition-all duration-300 hover:bg-[color:var(--color-surface)] hover:border-[color:var(--color-primary)]/60 hover:shadow-2xl hover:shadow-[color:var(--color-accent-dark)]/25 group-hover:border-[color:var(--color-primary)]">
                   {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-100/50 via-transparent to-lime-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[color:var(--color-primary-soft)]/40 via-transparent to-[color:var(--color-accent)]/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   
                   {/* Step number */}
                   {/* <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-sm font-bold shadow-lg">
@@ -429,27 +439,27 @@ export default function DistributionFlow() {
                   </div> */}
 
                   {/* Icon */}
-                  <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${node.color} flex items-center justify-center text-white mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-[color:var(--color-primary)] to-[color:var(--color-accent)] flex items-center justify-center text-white mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <node.icon size={28} strokeWidth={1.8} />
                   </div>
 
                   {/* Content */}
-                  <h3 className="relative font-bold text-gray-900 text-center group-hover:text-green-700 transition-colors duration-300">
+                  <h3 className="relative font-bold text-[color:var(--color-foreground)] text-center group-hover:text-[color:var(--color-accent)] transition-colors duration-300">
                     {node.label}
                   </h3>
-                  <p className="relative text-xs text-gray-600 text-center mt-2 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                  <p className="relative text-xs text-[color:var(--color-text-secondary)] text-center mt-2 leading-relaxed group-hover:text-[color:var(--color-foreground)] transition-colors duration-300">
                     {node.sub}
                   </p>
 
                   {/* Bottom accent */}
-                  <div className="absolute bottom-0 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-[color:var(--color-primary)] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Bottom Features */}
+        {/* How Scala Connects */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -457,26 +467,49 @@ export default function DistributionFlow() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 lg:mt-20"
         >
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            {[
-              { icon: "📦", text: "Barcode-driven inventory" },
-              { icon: "⚡", text: "Real-time sync" },
-              { icon: "🛡️", text: "Fraud control" },
-              { icon: "📊", text: "Analytics dashboard" },
-            ].map((feature, i) => (
+          <h3 className="text-xl font-semibold text-[color:var(--color-foreground)] text-center mb-8">
+            How Scala Connects Every Tier
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {scalaConnects.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.6 + i * 0.1 }}
-                className="flex items-center gap-2 px-5 py-3 rounded-full bg-white/70 border border-green-200/50 backdrop-blur-sm shadow-lg hover:shadow-xl hover:border-green-300 transition-all duration-300"
+                transition={{ delay: 0.5 + i * 0.05 }}
+                className="flex items-start gap-3 p-4 rounded-xl bg-[color:var(--color-background)]/80 border border-[color:var(--color-border)]"
               >
-                <span className="text-xl">{feature.icon}</span>
-                <span className="text-sm font-medium text-gray-800">{feature.text}</span>
+                <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-[color:var(--color-primary)]/20 text-[color:var(--color-primary)] flex items-center justify-center font-bold text-sm">
+                  {item.step}
+                </span>
+                <div>
+                  <p className="font-semibold text-[color:var(--color-foreground)] text-sm">{item.title}</p>
+                  <p className="text-xs text-[color:var(--color-text-secondary)] mt-0.5">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-12 flex flex-wrap justify-center gap-6"
+        >
+          {[
+            { value: "100%", label: "Product Traceability" },
+            { value: "<1 sec", label: "Sync Speed" },
+            { value: "6 Tiers", label: "Full Integration" },
+          ].map((s, i) => (
+            <div key={i} className="flex items-center gap-2 px-5 py-3 rounded-full bg-[color:var(--color-background)]/90 border border-[color:var(--color-border)]">
+              <span className="text-lg font-bold text-[color:var(--color-primary)]">{s.value}</span>
+              <span className="text-sm font-medium text-[color:var(--color-foreground)]">{s.label}</span>
+            </div>
+          ))}
         </motion.div>
 
         {/* CTA Section */}
@@ -489,7 +522,7 @@ export default function DistributionFlow() {
         >
           <a
             href="#demo"
-            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-2xl shadow-green-500/30 transition-all hover:shadow-green-500/50 hover:scale-105 active:scale-100"
+            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] text-white shadow-2xl shadow-[color:var(--color-accent-dark)]/40 transition-all hover:shadow-[color:var(--color-accent-dark)]/60 hover:scale-105 active:scale-100"
           >
             <span className="relative z-10">See It In Action</span>
             <svg
@@ -505,7 +538,7 @@ export default function DistributionFlow() {
                 d="M13 7l5 5m0 0l-5 5m5-5H6"
               />
             </svg>
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
           </a>
         </motion.div>
       </div>

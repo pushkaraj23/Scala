@@ -8,26 +8,32 @@ import IncentivesSection from "@/components/sections/IncentivesSection";
 import IndustriesSection from "@/components/sections/IndustriesSection";
 import DeploymentSection from "@/components/sections/DeploymentSection";
 import ContactSection from "@/components/sections/ContactSection";
-import AboutPage from "@/components/sections/AboutUs";
 import AboutUs from "@/components/sections/AboutUs";
 import GalleryPage from "@/components/sections/GalleryPage";
 import TestimonialSection from "@/components/sections/TestimonialSection";
+import VideoSection from "@/components/sections/VideoSection";
+import PricingSection from "@/components/sections/PricingSection";
+import IntegrationsSection from "@/components/sections/IntegrationsSection";
+import FAQSection from "@/components/sections/FAQSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <ProblemSection />
-      {/* <CustomerDilemma /> */}
       <SolutionSection />
       <FeaturesSection />
+      <VideoSection />
       <DistributionFlow />
-      <IncentivesSection />
       <IndustriesSection />
+      <PricingSection />
+      <IncentivesSection />
+      <IntegrationsSection />
       <DeploymentSection />
-      <GalleryPage/>
+      <TestimonialSection />
+      <GalleryPage />
       <AboutUs />
-      <TestimonialSection/>
+      <FAQSection />
       <ContactSection />
     </>
   );

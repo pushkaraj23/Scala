@@ -2,30 +2,39 @@
 
 /* ==================================
    SCALA DESIGN TOKENS (HEX)
+   Palette: #cfdbd5, #e8eddf, #f5cb5c, #242423, #333533
 ================================== */
 
 :root {
-  /* Brand */
-  --primary: #6DBE45;
-  --primary-dark: #58A037;
-  --accent: #1F5E63;
-  --accent-dark: #164A4D;
+  /* Brand core */
+  /* F5CB5C – Warm Gold */
+  /* CFDBD5 – Soft Sage */
+  /* E8EDDF – Light Mist */
+  /* 333533 – Charcoal */
+  /* 242423 – Deep Charcoal */
+
+  --primary: #F5CB5C;
+  --primary-dark: #D4AA3A;
+  --primary-soft: #FFE49A;
+
+  --accent: #333533;
+  --accent-dark: #242423;
 
   /* Backgrounds & Surfaces */
-  --background: #FFFFFF;
-  --surface: #EAF6F2;
-  --surface-light: #CFE8E5;
-  --border: #D9E3E2;
+  --background: #E8EDDF;
+  --surface: #CFDBD5;
+  --surface-light: #E8EDDF;
+  --border: #CFDBD5;
 
   /* Text */
-  --foreground: #0F2F32;
-  --text-secondary: #3A4F51;
-  --text-muted: #6B7F80;
+  --foreground: #242423;
+  --text-secondary: #333533;
+  --text-muted: #6C6F6B;
 
   /* Status */
-  --success: #4CAF50;
-  --warning: #F4B740;
-  --error: #E5533D;
+  --success: #3FAE74;
+  --warning: #E4A63A;
+  --error: #D94B4B;
 }
 
 /* ==================================
@@ -38,6 +47,7 @@
 
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-primary-soft: var(--primary-soft);
 
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
@@ -58,19 +68,20 @@
 }
 
 /* ==================================
-   DARK MODE (ENTERPRISE SaaS STYLE)
+   DARK MODE (Palette-based)
 ================================== */
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0B1E21;
-    --surface: #132F33;
-    --surface-light: #1A3F44;
-    --border: #1F4E53;
+    /* Dark mode derived from new palette */
+    --background: #242423;
+    --surface: #333533;
+    --surface-light: #3F413D;
+    --border: #555854;
 
-    --foreground: #E6F4F5;
-    --text-secondary: #B7D6D9;
-    --text-muted: #88AEB2;
+    --foreground: #E8EDDF;
+    --text-secondary: #CFDBD5;
+    --text-muted: #A4ADA0;
   }
 }
 

@@ -5,12 +5,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Cpu, Building2, Package, Car, Zap, Shirt } from "lucide-react";
 
 const industries = [
-  { icon: Cpu, name: "Electronics & Consumer Durables" },
-  { icon: Building2, name: "Building Materials & Sanitaryware" },
-  { icon: Package, name: "FMCG & Packaged Goods" },
-  { icon: Car, name: "Automotive Components" },
-  { icon: Zap, name: "Electricals & Switchgear" },
-  { icon: Shirt, name: "Apparel & Fashion Retail" },
+  { icon: Cpu, name: "Electronics & Consumer Durables", desc: "Complex multi-tier distribution" },
+  { icon: Car, name: "Automotive Components", desc: "Multi-tier supply chains" },
+  { icon: Building2, name: "Building Materials & Sanitaryware", desc: "Influencer-driven sales" },
+  { icon: Package, name: "FMCG & Packaged Goods", desc: "High-volume distribution" },
+  { icon: Zap, name: "Electricals & Switchgear", desc: "Technical products" },
+  { icon: Shirt, name: "Apparel & Fashion Retail", desc: "Seasonal inventory" },
 ];
 
 export default function IndustriesSection() {
@@ -35,13 +35,13 @@ export default function IndustriesSection() {
           className="text-center mb-16"
         >
           <p className="text-[color:var(--color-primary)] text-sm font-semibold tracking-widest uppercase mb-3">
-            Potential Target Industries
+            Market Opportunity
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[color:var(--color-foreground)]">
-            Built for multi-level distribution
+            Target Industries & Use Cases
           </h2>
           <p className="mt-4 text-lg text-[color:var(--color-text-secondary)] max-w-2xl mx-auto">
-            From FMCG to building materials — one platform for visibility and incentives.
+            Six key sectors transforming their distribution with Scala. Universal applicability: adaptable to any industry with multi-tier distribution and influencer-driven sales.
           </p>
         </motion.div>
 
@@ -61,7 +61,10 @@ export default function IndustriesSection() {
               <div className="w-12 h-12 rounded-xl bg-[color:var(--color-primary)]/15 flex items-center justify-center text-[color:var(--color-primary)] group-hover:bg-[color:var(--color-primary)]/25 transition">
                 <ind.icon size={24} strokeWidth={1.8} />
               </div>
-              <span className="font-semibold text-[color:var(--color-foreground)]">{ind.name}</span>
+              <div>
+                <span className="font-semibold text-[color:var(--color-foreground)] block">{ind.name}</span>
+                {ind.desc && <span className="text-xs text-[color:var(--color-text-secondary)]">{ind.desc}</span>}
+              </div>
             </motion.div>
           ))}
         </motion.div>

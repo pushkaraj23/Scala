@@ -20,25 +20,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Scala – Distribution, Inventory & Incentive Management Platform",
+    default: "Scala – Supply Chain Distribution & Incentive Management System",
     template: "%s | Scala",
   },
   description:
-    "Scala is an end-to-end distribution, inventory, and incentive management platform offering real-time visibility, automated rewards, and built-in fraud control.",
+    "Scala by Paxgrow India: End-to-end supply chain distribution and incentive management. Real-time visibility, 99.9% tracking accuracy, 95% fraud prevention, 7-day go-live.",
   keywords: [
+    "supply chain distribution",
+    "incentive management system",
     "distribution management software",
     "inventory management system",
-    "incentive management platform",
     "loyalty management software",
-    "supply chain visibility",
     "fraud control incentives",
     "FMCG distribution software",
+    "Paxgrow India",
   ],
   metadataBase: new URL("https://www.scalasuite.com"),
   openGraph: {
-    title: "Scala – Unified Distribution & Incentive Platform",
+    title: "Scala – Supply Chain Distribution & Incentive Management | Paxgrow India",
     description:
-      "Manage inventory, incentives, fraud detection, and last-mile execution on one unified platform.",
+      "Grow beyond boundaries. Unified platform for distribution, inventory, incentives, and fraud control. A product of www.scalasuite.com – Paxgrow India Pvt. Ltd.",
     url: "https://www.scalasuite.com",
     siteName: "Scala",
     type: "website",

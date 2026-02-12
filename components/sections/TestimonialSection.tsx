@@ -735,10 +735,10 @@ function TestimonialCard({
             className="relative bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 group"
         >
             {/* Hover Gradient Border Effect */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-l from-[#ffffff] via-[#c4ff6b] to-[#73b313] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-l from-white via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
 
             <div className="flex items-start gap-4 mb-4">
-                <Quote className="w-8 h-8 text-[#73b313] flex-shrink-0" />
+                <Quote className="w-8 h-8 text-[color:var(--color-primary)] flex-shrink-0" />
                 <StarRating rating={testimonial.rating} />
             </div>
 
@@ -747,7 +747,7 @@ function TestimonialCard({
             </blockquote>
 
             <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-l from-[#c4ff6b] to-[#73b313] flex items-center justify-center text-black font-bold">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-l from-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] flex items-center justify-center text-black font-bold">
                     {testimonial.name.charAt(0)}
                 </div>
                 <div>
@@ -765,7 +765,7 @@ function TestimonialCard({
 // Main Testimonial Section Component
 export default function TestimonialSection() {
     return (
-        <section className="py-20 sm:py-28 bg-gray-50">
+        <section id="testimonials" className="py-20 sm:py-28 bg-[color:var(--color-background)]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -779,20 +779,20 @@ export default function TestimonialSection() {
                         initial={{ opacity: 0, scale: 0.5 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-l from-[#ffffff] via-[#c4ff6b] to-[#73b313] mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-surface)] border border-[color:var(--color-primary)]/30 mb-6"
                     >
-                        <Sparkles className="w-4 h-4 text-black" />
-                        <span className="text-sm font-semibold text-black">Client Testimonials</span>
+                        <Sparkles className="w-4 h-4 text-[color:var(--color-primary)]" />
+                        <span className="text-sm font-semibold text-[color:var(--color-foreground)]">Client Testimonials</span>
                     </motion.div>
 
-                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[color:var(--color-foreground)] mb-6">
                         What Our{" "}
-                        <span className="bg-gradient-to-l from-[#73b313] via-[#c4ff6b] to-[#73b313] bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-l from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
                             Clients Say
                         </span>
                     </h2>
 
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-[color:var(--color-text-secondary)] max-w-2xl mx-auto">
                         Don't just take our word for it. Here's what our amazing clients have to
                         say about working with us.
                     </p>

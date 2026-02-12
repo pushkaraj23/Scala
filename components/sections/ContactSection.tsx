@@ -185,18 +185,23 @@ import {
   Loader2,
   Sparkles,
   Globe,
-  Clock,
   MessageCircle,
   User,
   Building2,
   CheckCircle,
   ArrowRight,
-  Calendar,
   Zap,
 } from "lucide-react";
 import { submitEnquiry } from "@/lib/firestore";
 
 // Animated Background Component
+const CONTACT_PARTICLES = Array.from({ length: 15 }, (_, i) => ({
+  left: 5 + ((i * 7) % 90),
+  top: 10 + ((i * 13) % 80),
+  duration: 3 + (i % 5) * 0.4,
+  delay: i * 0.25,
+}));
+
 function AnimatedBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -208,7 +213,8 @@ function AnimatedBackground() {
       <motion.div
         className="absolute -bottom-1/2 -right-1/2 w-[800px] h-[800px] rounded-full"
         style={{
-          background: "radial-gradient(circle, #c4ff6b 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, var(--color-primary-soft) 0%, transparent 70%)",
           filter: "blur(120px)",
         }}
         animate={{
@@ -226,19 +232,20 @@ function AnimatedBackground() {
       <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(#73b313 1px, transparent 1px), linear-gradient(90deg, #73b313 1px, transparent 1px)`,
+          backgroundImage:
+            "linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-primary) 1px, transparent 1px)",
           backgroundSize: "50px 50px",
         }}
       />
 
-      {/* Floating Particles */}
-      {[...Array(15)].map((_, i) => (
+      {/* Floating Particles (deterministic for SSR/CSR match) */}
+      {CONTACT_PARTICLES.map((p, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-[#73b313]/30 rounded-full"
+          className="absolute w-1 h-1 rounded-full bg-[color:var(--color-primary)]/30"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${p.left}%`,
+            top: `${p.top}%`,
           }}
           animate={{
             y: [0, -30, 0],
@@ -246,9 +253,9 @@ function AnimatedBackground() {
             scale: [1, 1.5, 1],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: p.duration,
             repeat: Infinity,
-            delay: Math.random() * 2,
+            delay: p.delay,
           }}
         />
       ))}
@@ -270,31 +277,57 @@ function ContactCard({
   link?: string;
   delay?: number;
 }) {
-  const Card = link ? motion.a : motion.div;
+  const isExternalLink = link?.startsWith("http");
+  const cardContent = (
+    <>
+      {/* Glow Effect */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[color:var(--color-primary)]/0 via-[color:var(--color-primary)]/5 to-[color:var(--color-primary-soft)]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="relative flex items-start gap-4">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-[color:var(--color-primary)]/20 transition-shadow">
+          <Icon className="w-6 h-6 text-[color:var(--color-accent-dark)]" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-semibold text-[color:var(--color-foreground)] mb-1">{title}</h3>
+          <p className="text-[color:var(--color-text-secondary)] text-sm leading-relaxed">
+            {content}
+          </p>
+        </div>
+      </div>
+    </>
+  );
+
+  const cardClassName =
+    "group relative bg-[color:var(--color-accent-dark)]/80 backdrop-blur-xl border border-[color:var(--color-border)] rounded-2xl p-6 hover:bg-[color:var(--color-accent-dark)]/90 hover:border-[color:var(--color-primary)]/40 transition-all duration-300 block w-full text-left no-underline";
+
+  if (link) {
+    return (
+      <motion.a
+        href={link}
+        target={isExternalLink ? "_blank" : undefined}
+        rel={isExternalLink ? "noopener noreferrer" : undefined}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.02, y: -5 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay }}
+        className={cardClassName}
+      >
+        {cardContent}
+      </motion.a>
+    );
+  }
 
   return (
-    <Card
-      href={link}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02, y: -5 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className="group relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/[0.05] hover:border-[#73b313]/30 transition-all duration-300"
+      className={cardClassName}
     >
-      {/* Glow Effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#73b313]/0 via-[#73b313]/5 to-[#c4ff6b]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <div className="relative flex items-start gap-4">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#73b313] to-[#c4ff6b] flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-[#73b313]/20 transition-shadow">
-          <Icon className="w-6 h-6 text-black" />
-        </div>
-        <div>
-          <h3 className="font-semibold text-white mb-1">{title}</h3>
-          <p className="text-gray-400 text-sm leading-relaxed">{content}</p>
-        </div>
-      </div>
-    </Card>
+      {cardContent}
+    </motion.div>
   );
 }
 
@@ -318,14 +351,18 @@ function PremiumInput({
 
   return (
     <label className="block group">
-      <span className="block text-sm font-medium text-gray-300 mb-2">
-        {label} {required && <span className="text-[#73b313]">*</span>}
+      <span className="block text-sm font-medium text-[color:var(--color-text-secondary)] mb-2">
+        {label}{" "}
+        {required && <span className="text-[color:var(--color-primary)]">*</span>}
       </span>
       <div className="relative">
         {Icon && (
           <div
-            className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${focused ? "text-[#73b313]" : "text-gray-500"
-              }`}
+            className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${
+              focused
+                ? "text-[color:var(--color-primary)]"
+                : "text-[color:var(--color-text-muted)]"
+            }`}
           >
             <Icon className="w-4 h-4" />
           </div>
@@ -337,9 +374,11 @@ function PremiumInput({
           placeholder={placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className={`w-full rounded-xl bg-white/[0.03] border ${focused ? "border-[#73b313]/50" : "border-white/10"
-            } ${Icon ? "pl-12" : "px-4"
-            } pr-4 py-3.5 text-white placeholder:text-gray-600 focus:outline-none transition-all duration-300`}
+          className={`w-full rounded-xl bg-[color:var(--color-accent-dark)]/60 border ${
+            focused
+              ? "border-[color:var(--color-primary)]/50"
+              : "border-[color:var(--color-border)]"
+          } ${Icon ? "pl-12" : "px-4"} pr-4 py-3.5 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none transition-all duration-300`}
         />
         {focused && (
           <motion.div
@@ -359,7 +398,7 @@ function SuccessAnimation() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.8 }}
-      className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-md rounded-2xl z-50"
+      className="absolute inset-0 flex items-center justify-center bg-[color:var(--color-accent-dark)]/85 backdrop-blur-md rounded-2xl z-50"
     >
       <motion.div
         initial={{ scale: 0 }}
@@ -370,15 +409,15 @@ function SuccessAnimation() {
         <motion.div
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#73b313] to-[#c4ff6b] flex items-center justify-center"
+          className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] flex items-center justify-center"
         >
-          <CheckCircle className="w-10 h-10 text-black" />
+          <CheckCircle className="w-10 h-10 text-[color:var(--color-accent-dark)]" />
         </motion.div>
         <motion.h3
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="text-2xl font-bold text-white mb-2"
+          className="text-2xl font-bold text-[color:var(--color-foreground)] mb-2"
         >
           Message Sent!
         </motion.h3>
@@ -386,7 +425,7 @@ function SuccessAnimation() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="text-gray-400"
+          className="text-[color:var(--color-text-secondary)]"
         >
           We'll get back to you shortly
         </motion.p>
@@ -434,26 +473,27 @@ export default function ContactSection() {
 
   const contactInfo = [
     {
+      icon: Phone,
+      title: "Call Us",
+      content: "+91 901-333-7705",
+      link: "tel:+919013337705",
+    },
+    {
       icon: Mail,
       title: "Email Us",
       content: "hello@scalasuite.com",
-      // link: "mailto:hello@scalasuite.com",
+      link: "mailto:hello@scalasuite.com",
     },
     {
-      icon: Phone,
-      title: "Call Us",
-      content: "+91 90133 37705",
-      // link: "tel:+919013337705",
+      icon: Globe,
+      title: "Visit Website",
+      content: "www.scalasuite.com",
+      link: "https://www.scalasuite.com",
     },
     {
       icon: MapPin,
-      title: "Visit Us",
+      title: "Our Offices",
       content: "Noida • Ghaziabad • Pune",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      content: "Mon - Fri: 9:00 AM - 6:00 PM",
     },
   ];
 
@@ -480,20 +520,22 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#73b313]/10 border border-[#73b313]/30 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-primary)]/10 border border-[color:var(--color-primary)]/30 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-[#c4ff6b]" />
-            <span className="text-sm font-medium text-[#c4ff6b]">Get in Touch</span>
+            <Sparkles className="w-4 h-4 text-[color:var(--color-primary-soft)]" />
+            <span className="text-sm font-medium text-[color:var(--color-primary-soft)]">
+              Get in Touch
+            </span>
           </motion.div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Let's Start a{" "}
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[color:var(--color-foreground)] mb-6">
+            Ready to Transform Your{" "}
             <span className="relative">
-              <span className="bg-gradient-to-r from-[#73b313] via-[#c4ff6b] to-[#73b313] bg-clip-text text-transparent">
-                Conversation
+              <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                Distribution Network?
               </span>
               <motion.span
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#73b313] to-[#c4ff6b] rounded-full"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] rounded-full"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -502,9 +544,8 @@ export default function ContactSection() {
             </span>
           </h2>
 
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Ready to transform your distribution network? We're here to help you scale your business
-            with cutting-edge solutions.
+          <p className="text-xl text-[color:var(--color-text-secondary)] max-w-2xl mx-auto">
+            Call us, email us, or visit our website. We're ready to help you grow beyond boundaries.
           </p>
 
           {/* Feature Pills */}
@@ -522,10 +563,12 @@ export default function ContactSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.1 }}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10"
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-accent-dark)]/70 border border-[color:var(--color-border)]"
               >
-                <feature.icon className="w-4 h-4 text-[#73b313]" />
-                <span className="text-sm text-gray-300">{feature.text}</span>
+                <feature.icon className="w-4 h-4 text-[color:var(--color-primary)]" />
+                <span className="text-sm text-[color:var(--color-text-secondary)]">
+                  {feature.text}
+                </span>
               </motion.div>
             ))}
           </motion.div>
@@ -552,10 +595,10 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-8 p-6 bg-gradient-to-br from-[#73b313]/10 to-transparent rounded-2xl border border-[#73b313]/20"
+              className="mt-8 p-6 bg-gradient-to-br from-[color:var(--color-primary)]/10 to-transparent rounded-2xl border border-[color:var(--color-primary)]/20"
             >
-              <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                <Globe className="w-5 h-5 text-[#73b313]" />
+              <h3 className="font-semibold text-[color:var(--color-foreground)] mb-4 flex items-center gap-2">
+                <Globe className="w-5 h-5 text-[color:var(--color-primary)]" />
                 Our Offices
               </h3>
               <div className="space-y-3 text-sm">
@@ -566,9 +609,9 @@ export default function ContactSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className="flex items-center gap-2 text-gray-400"
+                    className="flex items-center gap-2 text-[color:var(--color-text-secondary)]"
                   >
-                    <span className="w-2 h-2 rounded-full bg-[#73b313]" />
+                    <span className="w-2 h-2 rounded-full bg-[color:var(--color-primary)]" />
                     {city}, India
                   </motion.div>
                 ))}
@@ -584,16 +627,18 @@ export default function ContactSection() {
             className="lg:col-span-2 relative"
           >
             {/* Form Glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#73b313]/20 via-[#c4ff6b]/10 to-[#73b313]/20 rounded-3xl blur-2xl opacity-50" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-[color:var(--color-primary)]/20 via-[color:var(--color-primary-soft)]/10 to-[color:var(--color-primary)]/20 rounded-3xl blur-2xl opacity-50" />
 
-            <div className="relative bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-10">
+            <div className="relative bg-[color:var(--color-accent-dark)]/80 backdrop-blur-xl border border-[color:var(--color-border)] rounded-3xl p-8 sm:p-10">
               {/* Form Header */}
               <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-bold text-white">Send us a message</h3>
+                <h3 className="text-2xl font-bold text-[color:var(--color-foreground)]">
+                  Send us a message
+                </h3>
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#73b313] to-[#c4ff6b] flex items-center justify-center"
+                  className="w-10 h-10 rounded-lg bg-gradient-to-br from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] flex items-center justify-center"
                 >
                   <Send className="w-5 h-5 text-black" />
                 </motion.div>
@@ -635,13 +680,17 @@ export default function ContactSection() {
                 </div>
 
                 <label className="block group">
-                  <span className="block text-sm font-medium text-gray-300 mb-2">
-                    Message <span className="text-[#73b313]">*</span>
+                  <span className="block text-sm font-medium text-[color:var(--color-text-secondary)] mb-2">
+                    Message{" "}
+                    <span className="text-[color:var(--color-primary)]">*</span>
                   </span>
                   <div className="relative">
                     <div
-                      className={`absolute left-4 top-4 transition-colors ${focusedField === "message" ? "text-[#73b313]" : "text-gray-500"
-                        }`}
+                      className={`absolute left-4 top-4 transition-colors ${
+                        focusedField === "message"
+                          ? "text-[color:var(--color-primary)]"
+                          : "text-[color:var(--color-text-muted)]"
+                      }`}
                     >
                       <MessageCircle className="w-4 h-4" />
                     </div>
@@ -652,8 +701,11 @@ export default function ContactSection() {
                       placeholder="Tell us about your project or requirements..."
                       onFocus={() => setFocusedField("message")}
                       onBlur={() => setFocusedField(null)}
-                      className={`w-full rounded-xl bg-white/[0.03] border ${focusedField === "message" ? "border-[#73b313]/50" : "border-white/10"
-                        } pl-12 pr-4 py-3.5 text-white placeholder:text-gray-600 focus:outline-none focus:bg-white/[0.05] transition-all duration-300 resize-none`}
+                      className={`w-full rounded-xl bg-[color:var(--color-accent-dark)]/60 border ${
+                        focusedField === "message"
+                          ? "border-[color:var(--color-primary)]/50"
+                          : "border-[color:var(--color-border)]"
+                      } pl-12 pr-4 py-3.5 text-[color:var(--color-foreground)] placeholder:text-[color:var(--color-text-muted)] focus:outline-none focus:bg-[color:var(--color-accent-dark)]/70 transition-all duration-300 resize-none`}
                     />
                    
                   </div>
@@ -666,9 +718,9 @@ export default function ContactSection() {
                       initial={{ opacity: 0, y: -10, height: 0 }}
                       animate={{ opacity: 1, y: 0, height: "auto" }}
                       exit={{ opacity: 0, y: -10, height: 0 }}
-                      className="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm"
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl bg-[color:var(--color-error)]/10 border border-[color:var(--color-error)]/25 text-[color:var(--color-error)] text-sm"
                     >
-                      <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-[color:var(--color-error)] animate-pulse" />
                       {errorMessage}
                     </motion.div>
                   )}
@@ -682,8 +734,8 @@ export default function ContactSection() {
                   whileTap={{ scale: status === "loading" || status === "success" ? 1 : 0.98 }}
                   className="relative group w-full sm:w-auto"
                 >
-                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#73b313] via-[#c4ff6b] to-[#73b313] opacity-70 group-hover:opacity-100 blur-sm transition-opacity" />
-                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[#73b313] to-[#5a8c0f] text-black font-semibold transition-all">
+                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] opacity-70 group-hover:opacity-100 blur-sm transition-opacity" />
+                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-primary-dark)] text-black font-semibold transition-all">
                     {status === "loading" ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />
@@ -700,13 +752,19 @@ export default function ContactSection() {
                 </motion.button>
 
                 {/* Privacy Notice */}
-                <p className="text-xs text-gray-500 mt-4">
+                <p className="text-xs text-[color:var(--color-text-muted)] mt-4">
                   By sending this message, you agree to our{" "}
-                  <a href="#" className="text-[#73b313] hover:text-[#c4ff6b] transition-colors">
+                  <a
+                    href="#"
+                    className="text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-soft)] transition-colors"
+                  >
                     Privacy Policy
                   </a>{" "}
                   and{" "}
-                  <a href="#" className="text-[#73b313] hover:text-[#c4ff6b] transition-colors">
+                  <a
+                    href="#"
+                    className="text-[color:var(--color-primary)] hover:text-[color:var(--color-primary-soft)] transition-colors"
+                  >
                     Terms of Service
                   </a>
                 </p>

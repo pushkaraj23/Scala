@@ -10,11 +10,11 @@ export default function Footer() {
             <div className="border-b border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
                     <h3 className="text-2xl sm:text-3xl font-semibold mb-4">
-                        Ready to bring visibility and control to your distribution?
+                        Ready to Transform Your Distribution Network?
                     </h3>
                     <p className="text-white/80 max-w-2xl mx-auto mb-6">
-                        Scala helps brands manage inventory, incentives, fraud control, and
-                        last-mile execution on one unified platform.
+                        Supply Chain Distribution & Incentive Management — real-time visibility,
+                        automated incentives, and fraud control on one unified platform.
                     </p>
 
                     <a
@@ -22,7 +22,7 @@ export default function Footer() {
                         className="inline-flex items-center justify-center
                        rounded-lg px-6 py-3 text-sm font-medium
                        bg-[color:var(--color-primary)]
-                       text-white
+                       text-background
                        hover:bg-[color:var(--color-primary-dark)]
                        transition"
                     >
@@ -33,7 +33,7 @@ export default function Footer() {
 
             {/* Main Footer */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                     {/* Brand */}
                     <div>
                         <div className="flex items-center gap-2 text-lg font-semibold mb-4">
@@ -44,9 +44,13 @@ export default function Footer() {
                             An end-to-end distribution, inventory, and incentive management
                             platform with real-time visibility and built-in fraud control.
                         </p>
+                        <p className="mt-4 text-white/70 text-xs">
+                            Built for brands that run complex, multi-level distribution and loyalty
+                            programs and need complete control over inventory, incentives and fraud.
+                        </p>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Platform Links */}
                     <div>
                         <h4 className="text-sm font-semibold uppercase tracking-wide mb-4">
                             Platform
@@ -63,6 +67,11 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
+                                <a href="#pricing" className="hover:text-white transition">
+                                    Pricing
+                                </a>
+                            </li>
+                            <li>
                                 <a href="#industries" className="hover:text-white transition">
                                     Industries
                                 </a>
@@ -70,6 +79,45 @@ export default function Footer() {
                             <li>
                                 <a href="#deployment" className="hover:text-white transition">
                                     Deployment
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#integrations" className="hover:text-white transition">
+                                    Integrations
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Resources */}
+                    <div>
+                        <h4 className="text-sm font-semibold uppercase tracking-wide mb-4">
+                            Resources
+                        </h4>
+                        <ul className="space-y-3 text-sm text-white/75">
+                            <li>
+                                <a href="#demo" className="hover:text-white transition">
+                                    Product Demo
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#testimonials" className="hover:text-white transition">
+                                    Testimonials
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#faqs" className="hover:text-white transition">
+                                    FAQs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#gallery" className="hover:text-white transition">
+                                    Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about" className="hover:text-white transition">
+                                    About Scala
                                 </a>
                             </li>
                         </ul>
@@ -87,11 +135,15 @@ export default function Footer() {
                             </li>
                             <li className="flex items-start gap-3">
                                 <Phone size={16} className="mt-0.5" />
-                                <span>+91 90133 37705</span>
+                                <a href="tel:+919013337705" className="hover:text-white transition">+91 901-333-7705</a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin size={16} className="mt-0.5" />
                                 <span>Noida • Ghaziabad • Pune</span>
+                            </li>
+                            <li className="pt-2 text-xs text-white/60">
+                                For partnerships, integrations or enterprise deployments, reach out to{" "}
+                                <span className="font-medium text-white">hello@scalasuite.com</span>
                             </li>
                         </ul>
                     </div>
@@ -101,11 +153,11 @@ export default function Footer() {
             {/* Bottom Bar */}
             <div className="border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6
-                        flex flex-col sm:flex-row items-center justify-between
+                        flex flex-col sm:flex-row items-center justify-between gap-4
                         text-xs text-white/60">
-                    <span>© {new Date().getFullYear()} Scala. All rights reserved.</span>
-                    <span className="mt-2 sm:mt-0">
-                        You control the brand. We protect the platform.
+                    <span>© 2025 Paxgrow India Pvt. Ltd. All rights reserved.</span>
+                    <span className="font-semibold text-white/90 uppercase tracking-wider">
+                        Your Growth Partner
                     </span>
                 </div>
             </div>

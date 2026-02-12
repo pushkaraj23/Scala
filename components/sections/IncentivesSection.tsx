@@ -3,33 +3,28 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Barcode, Package, Gift, Megaphone, ShieldCheck } from "lucide-react";
+import { Barcode, Gift, Megaphone, ShieldCheck } from "lucide-react";
 
 const blocks = [
   {
     icon: Barcode,
-    title: "Barcode-driven inventory",
-    desc: "Scan, record, dispatch — real-time sync. Every movement captured and updated instantly.",
-  },
-  {
-    icon: Package,
-    title: "Order, inventory & status automation",
-    desc: "End-to-end automation for orders, stock levels, and delivery status.",
+    title: "Inventory Management — Barcode-Driven Inventory Control",
+    desc: "Every movement captured, verified, and updated instantly. Unique QR codes, instant mobile scanning, real-time cloud sync. 99.9% accuracy, 60% faster processing, zero manual errors.",
   },
   {
     icon: Gift,
-    title: "Plumber loyalty & incentive automation",
-    desc: "Scan → wallet → redemption. QR scan credits points; geo & frequency validation; fraud control.",
-  },
-  {
-    icon: Megaphone,
-    title: "Offers & promotions engine",
-    desc: "Create, target, and deliver promotions across channels.",
+    title: "Loyalty Program — Plumber Loyalty & Incentive Automation",
+    desc: "Scan → Wallet → Redemption → Fraud Control. Points credited in <2 seconds. UPI cash transfer, gift vouchers, or product kits. Geo-location and frequency validation prevent fraud.",
   },
   {
     icon: ShieldCheck,
-    title: "Automated fraud detection & control",
-    desc: "Real-time monitoring ensures secure incentive distribution. Unusual patterns flagged for admin verification.",
+    title: "Security & Compliance — Automated Fraud Detection",
+    desc: "Multi-layered fraud prevention: Geo-location validation, device fingerprinting, duplicate detection, frequency validation, pattern analysis. 95% fraud prevention, <5 sec detection speed.",
+  },
+  {
+    icon: Megaphone,
+    title: "Marketing Automation — Offers & Promotions Engine",
+    desc: "Create, target, and deliver promotions across all channels. 35% higher redemption, 3x better targeting. Percentage discounts, bonus points, free products, contests & gamification.",
   },
 ];
 
@@ -59,10 +54,10 @@ export default function IncentivesSection() {
             Platform Capabilities
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[color:var(--color-foreground)]">
-            Inventory, incentives & control
+            Inventory, Loyalty, Security & Marketing
           </h2>
           <p className="mt-4 text-lg text-[color:var(--color-text-secondary)] max-w-2xl mx-auto">
-            From barcode scanning to fraud-proof rewards — all in one place.
+            Barcode-driven inventory, automated loyalty programs, fraud control, and promotions — all in one platform.
           </p>
         </motion.div>
 
