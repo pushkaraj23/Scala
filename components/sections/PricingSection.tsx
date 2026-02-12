@@ -42,19 +42,6 @@ const plans = [
   },
 ];
 
-const cardContainer = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: 0.15 + i * 0.08,
-      ease: "easeOut",
-    },
-  }),
-};
-
 export default function PricingSection() {
   const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
 
@@ -116,11 +103,14 @@ export default function PricingSection() {
             return (
               <motion.div
                 key={plan.name}
-                variants={cardContainer}
-                initial="hidden"
-                whileInView="show"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                custom={index}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.15 + index * 0.08,
+                  ease: "easeOut",
+                }}
                 whileHover={{
                   y: -8,
                   scale: 1.02,
