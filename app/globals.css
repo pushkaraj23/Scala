@@ -1,40 +1,44 @@
 @import "tailwindcss";
 
 /* ==================================
-   SCALA DESIGN TOKENS (HEX)
-   Palette: #cfdbd5, #e8eddf, #f5cb5c, #242423, #333533
+   SCALA DESIGN TOKENS
+   Dark purple / indigo theme with gold accent
+   Form: dark purple card, purple CTA, gold secondary
 ================================== */
 
 :root {
-  /* Brand core */
-  /* F5CB5C – Warm Gold */
-  /* CFDBD5 – Soft Sage */
-  /* E8EDDF – Light Mist */
-  /* 333533 – Charcoal */
-  /* 242423 – Deep Charcoal */
+  /* Primary – Vibrant purple (Sign In, main CTA) */
+  --primary: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-soft: #a78bfa;
 
-  --primary: #F5CB5C;
-  --primary-dark: #D4AA3A;
-  --primary-soft: #FFE49A;
+  /* Accent – Gold / yellow (Sign Up, secondary CTA) */
+  --accent: #f5cb5c;
+  --accent-dark: #1a1625;
 
-  --accent: #333533;
-  --accent-dark: #242423;
+  /* Backgrounds & Surfaces – Dark purple gradient base */
+  --background: #1a1625;
+  --surface: #2d2440;
+  --surface-light: #352a4a;
+  --border: rgba(255, 255, 255, 0.22);
 
-  /* Backgrounds & Surfaces */
-  --background: #E8EDDF;
-  --surface: #CFDBD5;
-  --surface-light: #E8EDDF;
-  --border: #CFDBD5;
+  /* Text – White labels, light grey hints (WCAG AA contrast on dark) */
+  --foreground: #ffffff;
+  --text-secondary: #d8e2f0;
+  --text-muted: #b0bfd4;
 
-  /* Text */
-  --foreground: #242423;
-  --text-secondary: #333533;
-  --text-muted: #6C6F6B;
+  /* Text on accent (gold) background – dark for contrast */
+  --accent-foreground: #1a1625;
+
+  /* Input fields – White background, dark text */
+  --input-bg: #ffffff;
+  --input-border: #e2e8f0;
+  --input-foreground: #1e293b;
 
   /* Status */
-  --success: #3FAE74;
-  --warning: #E4A63A;
-  --error: #D94B4B;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 /* ==================================
@@ -58,6 +62,11 @@
 
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-input-bg: var(--input-bg);
+  --color-input-border: var(--input-border);
+  --color-input-foreground: var(--input-foreground);
 
   --color-success: var(--success);
   --color-warning: var(--warning);
@@ -68,20 +77,15 @@
 }
 
 /* ==================================
-   DARK MODE (Palette-based)
+   LIGHT MODE FALLBACK (optional)
 ================================== */
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    /* Dark mode derived from new palette */
-    --background: #242423;
-    --surface: #333533;
-    --surface-light: #3F413D;
-    --border: #555854;
-
-    --foreground: #E8EDDF;
-    --text-secondary: #CFDBD5;
-    --text-muted: #A4ADA0;
+    /* Slightly lighter variants for light preference */
+    --background: #1e1b2e;
+    --surface: #2d2440;
+    --surface-light: #352a4a;
   }
 }
 
@@ -94,9 +98,10 @@ html {
 }
 
 body {
+  background: linear-gradient(135deg, #1e1b2e 0%, #1a1625 50%, #2d1b4e 100%);
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -123,8 +128,40 @@ body {
 .card {
   background-color: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   padding: 1.5rem;
+}
+
+/* Form / auth card – dark purple with large rounded corners */
+.form-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+
+/* Input fields – white bg, dark text, rounded */
+.input-field {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-foreground);
+  border-radius: 0.75rem;
+}
+
+/* Primary button – vibrant purple */
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+/* Secondary button – gold / yellow */
+.btn-secondary {
+  background-color: var(--accent);
+  color: var(--input-foreground);
+  border-radius: 1rem;
+  font-weight: 600;
 }
 
 .heading-primary {

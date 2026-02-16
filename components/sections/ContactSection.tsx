@@ -284,7 +284,7 @@ function ContactCard({
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[color:var(--color-primary)]/0 via-[color:var(--color-primary)]/5 to-[color:var(--color-primary-soft)]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       <div className="relative flex items-start gap-4">
         <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] flex items-center justify-center flex-shrink-0 group-hover:shadow-lg group-hover:shadow-[color:var(--color-primary)]/20 transition-shadow">
-          <Icon className="w-6 h-6 text-[color:var(--color-accent-dark)]" />
+          <Icon className="w-6 h-6 text-white" />
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="font-semibold text-[color:var(--color-foreground)] mb-1">{title}</h3>
@@ -411,7 +411,7 @@ function SuccessAnimation() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] flex items-center justify-center"
         >
-          <CheckCircle className="w-10 h-10 text-[color:var(--color-accent-dark)]" />
+          <CheckCircle className="w-10 h-10 text-white" />
         </motion.div>
         <motion.h3
           initial={{ opacity: 0, y: 10 }}
@@ -531,7 +531,7 @@ export default function ContactSection() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[color:var(--color-foreground)] mb-6">
             Ready to Transform Your{" "}
             <span className="relative">
-              <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+              <span className="text-[color:var(--color-primary-soft)]">
                 Distribution Network?
               </span>
               <motion.span
@@ -734,8 +734,7 @@ export default function ContactSection() {
                   whileTap={{ scale: status === "loading" || status === "success" ? 1 : 0.98 }}
                   className="relative group w-full sm:w-auto"
                 >
-                  <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] opacity-70 group-hover:opacity-100 blur-sm transition-opacity" />
-                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-primary-dark)] text-black font-semibold transition-all">
+                  <div className="relative flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[color:var(--color-primary)] text-white font-semibold transition-all hover:bg-[color:var(--color-primary-dark)]">
                     {status === "loading" ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />

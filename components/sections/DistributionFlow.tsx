@@ -1,128 +1,9 @@
-// "use client";
-
-// import { useRef } from "react";
-// import Image from "next/image";
-// import { motion, useScroll, useTransform } from "framer-motion";
-// import { Factory, Warehouse, Truck, Store, User } from "lucide-react";
-
-// const flow = [
-//   { icon: Factory, label: "Manufacturer", sub: "Demand & products with QR tagging" },
-//   { icon: Warehouse, label: "Brand Warehouse", sub: "QR-verified inventory" },
-//   { icon: Truck, label: "Super Stockist", sub: "Live stock visibility to dealers" },
-//   { icon: Store, label: "Dealer", sub: "Orders & sells via platform" },
-//   { icon: User, label: "Plumber / Influencer", sub: "Scans for rewards" },
-// ];
-
-// export default function DistributionFlow() {
-//   const ref = useRef<HTMLElement>(null);
-//   const { scrollYProgress } = useScroll({
-//     target: ref,
-//     offset: ["start end", "end start"],
-//   });
-//   const x = useTransform(scrollYProgress, [0.2, 0.6], ["-8%", "8%"]);
-//   const glowY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
-
-//   return (
-//     <section
-//       ref={ref}
-//       id="flow"
-//       className="relative py-24 sm:py-32 overflow-hidden bg-[color:var(--color-foreground)]"
-//     >
-//       <motion.div style={{ x }} className="absolute inset-0 bg-[color:var(--color-accent)]/25" aria-hidden />
-//       <motion.div
-//         style={{ y: glowY }}
-//         className="pointer-events-none absolute -right-40 top-1/3 h-72 w-72 rounded-full bg-[radial-gradient(circle_at_center,var(--color-primary)/35,transparent_70%)] opacity-80"
-//         aria-hidden
-//       />
-//       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-center mb-12">
-//           <motion.div
-//             initial={{ opacity: 0, y: 24 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             viewport={{ once: true }}
-//             className="text-center lg:text-left"
-//           >
-//             <p className="text-[color:var(--color-primary)] text-sm font-semibold tracking-widest uppercase mb-3">
-//               End to End Distribution Flow
-//             </p>
-//             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-//               From manufacturer to last mile
-//             </h2>
-//             <p className="mt-4 text-lg text-white/80 max-w-xl mx-auto lg:mx-0">
-//               Every movement is captured, verified, and visible — from production to plumber.
-//             </p>
-//           </motion.div>
-
-//           <motion.div
-//             initial={{ opacity: 0, scale: 0.9, x: 30 }}
-//             whileInView={{ opacity: 1, scale: 1, x: 0 }}
-//             viewport={{ once: true }}
-//             transition={{ duration: 0.6 }}
-//             className="relative w-full max-w-md mx-auto"
-//           >
-//             <motion.div
-//               animate={{ y: [0, -12, 0] }}
-//               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-//               className="relative rounded-3xl border border-white/20 bg-white/5 backdrop-blur-xl p-4 shadow-2xl"
-//             >
-//               <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-[color:var(--color-primary)]/40 via-transparent to-[color:var(--color-accent)]/40 opacity-80" />
-//               <div className="relative rounded-2xl overflow-hidden bg-[radial-gradient(circle_at_top,var(--color-primary)/20,transparent_60%)] p-4">
-//                 <Image
-//                   src="/globe.svg"
-//                   alt="Global distribution visibility"
-//                   width={640}
-//                   height={420}
-//                   className="w-full h-auto"
-//                 />
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         </div>
-
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           whileInView={{ opacity: 1 }}
-//           viewport={{ once: true }}
-//           transition={{ staggerChildren: 0.12, delayChildren: 0.2 }}
-//           className="flex flex-wrap justify-center gap-4 sm:gap-6"
-//         >
-//           {flow.map((node, i) => (
-//             <motion.div
-//               key={i}
-//               initial={{ opacity: 0, y: 24, scale: 0.95 }}
-//               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-//               viewport={{ once: true }}
-//               transition={{ delay: i * 0.08 }}
-//               className="flex flex-col items-center rounded-2xl border border-white/20 bg-white/5 backdrop-blur p-6 sm:p-8 min-w-[140px] sm:min-w-[160px] hover:bg-white/12 hover:border-[color:var(--color-primary)]/60 hover:-translate-y-1 transition-transform transition-colors"
-//             >
-//               <div className="w-12 h-12 rounded-xl bg-[color:var(--color-primary)]/20 flex items-center justify-center text-[color:var(--color-primary)] mb-4">
-//                 <node.icon size={24} strokeWidth={1.8} />
-//               </div>
-//               <span className="font-semibold text-white text-center">{node.label}</span>
-//               <span className="text-xs text-white/80 text-center mt-1">{node.sub}</span>
-//             </motion.div>
-//           ))}
-//         </motion.div>
-//         <motion.p
-//           initial={{ opacity: 0 }}
-//           whileInView={{ opacity: 1 }}
-//           viewport={{ once: true }}
-//           className="mt-10 text-center text-white/80 text-sm"
-//         >
-//           Barcode-driven inventory • Real-time sync • Fraud control
-//         </motion.p>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Building2, Factory, Warehouse, Truck, Store, User, ArrowRight } from "lucide-react";
+import { Building2, Factory, Warehouse, Truck, Store, User } from "lucide-react";
 
 const flow = [
   { icon: Building2, label: "Brand", sub: "Source & product management" },
@@ -142,28 +23,28 @@ const scalaConnects = [
   { step: 6, title: "Analytics & Insights", desc: "Actionable insights for decisions" },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
-    },
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
   },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12
-    }
+const staggerFlow = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
+  },
+};
+
+const connectStagger = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0.1 },
   },
 };
 
@@ -306,9 +187,9 @@ export default function DistributionFlow() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold tracking-tight mb-6"
             >
-              <span className="text-[color:var(--color-foreground)]">End-to-End </span>
-              <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
-                Distribution Flow
+              <span className="text-accent"> End-to-end </span>
+              <span className="text-accent-dark">
+                Distribution Flows
               </span>
             </motion.h2>
             
@@ -336,7 +217,7 @@ export default function DistributionFlow() {
                 { value: "Zero", label: "Leakage" },
               ].map((stat, i) => (
                 <div key={i} className="text-center lg:text-left">
-                  <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+                  <div className="text-2xl sm:text-3xl font-bold text-green-500">
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-600">{stat.label}</div>
@@ -394,65 +275,86 @@ export default function DistributionFlow() {
           </motion.div>
         </div>
 
-        {/* Flow Cards */}
+        {/* Flow – Pipeline style: vertical on mobile, horizontal on desktop */}
         <motion.div
-          variants={container}
+          variants={staggerFlow}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, margin: "-60px" }}
           className="relative"
         >
-          {/* Connection line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[color:var(--color-background)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] rounded-full -translate-y-1/2 z-0" />
-          
-          <div className="relative z-10 flex flex-wrap justify-center gap-4 lg:gap-0 lg:grid lg:grid-cols-6">
+          {/* Desktop: Horizontal pipeline */}
+          <div className="hidden lg:block">
+            <div className="relative flex items-start justify-between gap-2 px-4">
+              {/* Track line */}
+              <div className="absolute top-8 left-8 right-8 h-1 rounded-full bg-[color:var(--color-border)]/60" />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" as const, delay: 0.4 }}
+                className="absolute top-8 left-8 right-8 h-1 rounded-full origin-left bg-[color:var(--color-primary)]/80"
+              />
+
+              {flow.map((node, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeInUp}
+                  className="relative flex flex-col items-center flex-1 min-w-0 max-w-[140px]"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.08, y: -4 }}
+                    className="relative z-10 flex flex-col items-center"
+                  >
+                    <div className="relative w-16 h-16 rounded-2xl bg-[color:var(--color-background)]/95 backdrop-blur border-2 border-[color:var(--color-primary)]/50 shadow-xl shadow-[color:var(--color-primary)]/10 flex items-center justify-center text-[color:var(--color-primary)] transition-colors hover:border-[color:var(--color-primary)] hover:bg-[color:var(--color-primary)]/10">
+                      <node.icon size={28} strokeWidth={1.8} />
+                      <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[color:var(--color-primary)] text-white text-[10px] font-bold flex items-center justify-center shadow">
+                        {i + 1}
+                      </span>
+                    </div>
+                  </motion.div>
+                  <h3 className="mt-3 font-semibold text-[color:var(--color-foreground)] text-sm text-center truncate w-full">
+                    {node.label}
+
+                  </h3>
+                  <p className="mt-0.5 text-[10px] sm:text-xs text-foreground/80 text-center line-clamp-2 leading-tight">
+                    {node.sub}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile & Tablet: Vertical timeline */}
+          <div className="lg:hidden space-y-0">
             {flow.map((node, i) => (
               <motion.div
                 key={i}
-                // variants={item}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
-                className="group relative flex flex-col items-center"
+                variants={fadeInUp}
+                className="relative flex gap-4 sm:gap-6"
               >
-                {/* Arrow connector (hidden on mobile, visible on lg) */}
+                {/* Timeline line */}
                 {i < flow.length - 1 && (
-                  <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-20">
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <ArrowRight className="w-6 h-6 text-[color:var(--color-primary)]" />
-                    </motion.div>
-                  </div>
+                  <div className="absolute left-[27px] sm:left-[31px] top-14 bottom-0 w-0.5 bg-[color:var(--color-primary)]/30" />
                 )}
-
-                <div className="relative rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-background)]/95 backdrop-blur-xl p-6 sm:p-8 min-w-[160px] sm:min-w-[180px] transition-all duration-300 hover:bg-[color:var(--color-surface)] hover:border-[color:var(--color-primary)]/60 hover:shadow-2xl hover:shadow-[color:var(--color-accent-dark)]/25 group-hover:border-[color:var(--color-primary)]">
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[color:var(--color-primary-soft)]/40 via-transparent to-[color:var(--color-accent)]/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  
-                  {/* Step number */}
-                  {/* <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-sm font-bold shadow-lg">
+                <div className="relative z-10 flex-shrink-0">
+                  <motion.div
+                    whileTap={{ scale: 0.96 }}
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[color:var(--color-background)]/95 backdrop-blur border-2 border-[color:var(--color-primary)]/50 flex items-center justify-center text-[color:var(--color-primary)]"
+                  >
+                    <node.icon size={24} strokeWidth={1.8} className="sm:w-7 sm:h-7" />
+                  </motion.div>
+                  <span className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-[color:var(--color-primary)] text-white text-[10px] font-bold flex items-center justify-center shadow">
                     {i + 1}
-                  </div> */}
-
-                  {/* Icon */}
-                  <div className="relative w-14 h-14 rounded-xl bg-gradient-to-br from-[color:var(--color-primary)] to-[color:var(--color-accent)] flex items-center justify-center text-white mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <node.icon size={28} strokeWidth={1.8} />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="relative font-bold text-[color:var(--color-foreground)] text-center group-hover:text-[color:var(--color-accent)] transition-colors duration-300">
+                  </span>
+                </div>
+                <div className="flex-1 min-w-0 pt-1 pb-8 sm:pb-10">
+                  <h3 className="font-semibold text-[color:var(--color-foreground)] text-base sm:text-lg">
                     {node.label}
                   </h3>
-                  <p className="relative text-xs text-[color:var(--color-text-secondary)] text-center mt-2 leading-relaxed group-hover:text-[color:var(--color-foreground)] transition-colors duration-300">
+                  <p className="mt-1 text-sm text-foreground/80 leading-relaxed">
                     {node.sub}
                   </p>
-
-                  {/* Bottom accent */}
-                  <div className="absolute bottom-0 left-4 right-4 h-1 bg-gradient-to-r from-transparent via-[color:var(--color-primary)] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </motion.div>
             ))}
@@ -461,31 +363,38 @@ export default function DistributionFlow() {
 
         {/* How Scala Connects */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 lg:mt-20"
+          variants={connectStagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-20 lg:mt-24"
         >
-          <h3 className="text-xl font-semibold text-[color:var(--color-foreground)] text-center mb-8">
-            How Scala Connects Every Tier
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <motion.div
+            variants={fadeInUp}
+            className="text-center mb-10"
+          >
+            <span className="inline-block px-3 py-1 rounded-full bg-primary border border-primary-dark text-xs font-semibold text-accent-dark uppercase tracking-wider mb-4">
+              The Process
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[color:var(--color-foreground)]">
+              How Scala Connects Every Tier
+            </h3>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {scalaConnects.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 + i * 0.05 }}
-                className="flex items-start gap-3 p-4 rounded-xl bg-[color:var(--color-background)]/80 border border-[color:var(--color-border)]"
+                variants={fadeInUp}
+                whileHover={{ y: -3 }}
+                className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl bg-[color:var(--color-background)]/90 backdrop-blur-sm border border-[color:var(--color-border)] hover:border-[color:var(--color-primary)]/40 transition-colors"
               >
-                <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-[color:var(--color-primary)]/20 text-[color:var(--color-primary)] flex items-center justify-center font-bold text-sm">
+                <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-[color:var(--color-primary)]/20 text-[color:var(--color-primary)] flex items-center justify-center font-bold text-sm group-hover:bg-[color:var(--color-primary)]/30 transition-colors">
                   {item.step}
                 </span>
-                <div>
-                  <p className="font-semibold text-[color:var(--color-foreground)] text-sm">{item.title}</p>
-                  <p className="text-xs text-[color:var(--color-text-secondary)] mt-0.5">{item.desc}</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-[color:var(--color-foreground)] text-sm sm:text-base">{item.title}</p>
+                  <p className="text-xs sm:text-sm text-[color:var(--color-text-secondary)] mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -522,7 +431,7 @@ export default function DistributionFlow() {
         >
           <a
             href="#demo"
-            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] text-white shadow-2xl shadow-[color:var(--color-accent-dark)]/40 transition-all hover:shadow-[color:var(--color-accent-dark)]/60 hover:scale-105 active:scale-100"
+            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-[color:var(--color-primary)] text-white shadow-2xl shadow-[color:var(--color-accent-dark)]/40 transition-all hover:bg-[color:var(--color-primary-dark)] hover:shadow-[color:var(--color-accent-dark)]/60 hover:scale-105 active:scale-100"
           >
             <span className="relative z-10">See It In Action</span>
             <svg

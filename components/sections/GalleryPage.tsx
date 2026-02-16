@@ -535,7 +535,7 @@ export default function GalleryPage() {
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
                             Creative{" "}
                             <span className="relative">
-                                <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                                <span className="text-[color:var(--color-primary-soft)]">
                                     Gallery
                                 </span>
                                 <motion.span

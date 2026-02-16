@@ -242,7 +242,7 @@ export default function ProblemSection() {
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="text-white">The Distribution </span>
-            <span className="block bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-accent)] to-[color:var(--color-primary)] bg-clip-text text-transparent leading-[1.1] animate-gradient bg-[length:200%_auto]">
+            <span className="block text-[color:var(--color-primary-soft)] leading-[1.1]">
               Dilemma
             </span>
           </h2>
@@ -286,7 +286,7 @@ export default function ProblemSection() {
                   {p.title}
                 </h3>
                 
-                <p className="relative text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+                <p className="relative text-sm text-white/75 leading-relaxed group-hover:text-white/90 transition-colors duration-300">
                   {p.desc}
                 </p>
 
@@ -310,13 +310,13 @@ export default function ProblemSection() {
               <p className="text-white font-semibold text-lg">
                 Industry Impact
               </p>
-              <p className="text-white/50 text-sm mt-1">
+              <p className="text-white/80 text-sm mt-1">
                 Companies with manual distribution systems experience 23% higher operational costs and 35% slower growth compared to automated competitors.
               </p>
             </div>
             <a
               href="#solution"
-              className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] text-white shadow-2xl shadow-[color:var(--color-primary)]/50 transition-all hover:shadow-[color:var(--color-primary)]/70 hover:scale-105 active:scale-100"
+              className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-[color:var(--color-primary)] text-white shadow-2xl shadow-[color:var(--color-primary)]/50 transition-all hover:bg-[color:var(--color-primary-dark)] hover:shadow-[color:var(--color-primary)]/70 hover:scale-105 active:scale-100"
             >
               <span className="relative z-10">See The Solution</span>
               <svg 

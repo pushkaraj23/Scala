@@ -26,7 +26,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--color-accent)_0%,_transparent_50%)] opacity-10" aria-hidden />
       <motion.div
         style={{ y }}
-        className="absolute inset-0  bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"
+        className="absolute inset-0 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"
         aria-hidden
       />
 
@@ -62,7 +62,7 @@ export default function HeroSection() {
       <motion.div
         style={{ opacity, scale }}
         transition={{ ease: "easeOut" }}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 will-change-transform"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-sm:py-12 will-change-transform"
       >
         <div className="grid gap-12 lg:gap-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] items-center">
           {/* Left content */}
@@ -78,7 +78,7 @@ export default function HeroSection() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[color:var(--color-primary)] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[color:var(--color-primary)]"></span>
               </span>
-              <span className="text-white/90 text-xs sm:text-sm font-medium tracking-wide">
+              <span className="text-white/95 text-xs sm:text-sm font-medium tracking-wide">
                 SAAS PLATFORM
               </span>
             </motion.div>
@@ -94,7 +94,7 @@ export default function HeroSection() {
                 <span className="block text-white leading-[1.1]">
                   Supply Chain Distribution & Incentive Management System
                 </span>
-                <span className="block mt-2 bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] bg-clip-text text-transparent leading-[1.1] animate-gradient bg-[length:200%_auto]">
+                <span className="block mt-2 text-[color:var(--color-primary-soft)] leading-[1.1]">
                   GROW BEYOND BOUNDARIES
                 </span>
               </motion.h1>
@@ -103,7 +103,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4 }}
-                className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-white/85 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               >
                 A Product of{" "}
                 <a href="https://www.scalasuite.com" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline hover:text-[color:var(--color-primary)]">www.scalasuite.com</a>
@@ -120,7 +120,7 @@ export default function HeroSection() {
             >
               <a
                 href="#contact"
-                className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] text-white shadow-2xl shadow-[color:var(--color-primary)]/50 transition-all hover:shadow-[color:var(--color-primary)]/70 hover:scale-105 active:scale-100"
+                className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-[color:var(--color-primary)] text-white shadow-2xl shadow-[color:var(--color-primary)]/50 transition-all hover:bg-[color:var(--color-primary-dark)] hover:shadow-[color:var(--color-primary)]/70 hover:scale-105 active:scale-100"
               >
                 <span className="relative z-10">Request Demo</span>
                 <svg

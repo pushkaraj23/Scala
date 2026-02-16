@@ -255,7 +255,7 @@ export default function CustomerDilemma() {
             className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
           >
             <span className="text-gray-900">When growth is </span>
-            <span className="bg-gradient-to-r from-lime-600 via-green-600 to-emerald-600 bg-clip-text text-transparent">
+            <span className="text-green-500">
               held back
             </span>
           </motion.h2>
@@ -308,7 +308,7 @@ export default function CustomerDilemma() {
 
                 <div className="pt-4 border-t border-lime-200/50">
                   <div className="flex items-center gap-4">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-lime-600 to-green-600 bg-clip-text text-transparent">87%</div>
+                    <div className="text-3xl font-bold text-green-500">87%</div>
                     <div className="text-sm text-gray-600">of companies struggle with distribution visibility</div>
                   </div>
                 </div>
@@ -379,7 +379,7 @@ export default function CustomerDilemma() {
         >
           <a
             href="#solution"
-            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-gradient-to-r from-lime-600 to-green-600 text-white shadow-2xl shadow-lime-500/30 transition-all hover:shadow-lime-500/50 hover:scale-105 active:scale-100"
+            className="group relative inline-flex items-center justify-center rounded-2xl px-8 py-4 text-base font-semibold bg-green-600 text-white shadow-2xl shadow-lime-500/30 transition-all hover:bg-green-700 hover:shadow-lime-500/50 hover:scale-105 active:scale-100"
           >
             <span className="relative z-10">Discover The Solution</span>
             <svg

@@ -278,7 +278,7 @@ export default function DeploymentSection() {
             className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6"
           >
             <span className="text-white">Deployment, Licensing </span>
-            <span className="bg-gradient-to-r from-[color:var(--color-primary-soft)] via-[color:var(--color-primary)] to-[color:var(--color-primary-soft)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+            <span className="text-[color:var(--color-primary-soft)]">
               & Support
             </span>
           </motion.h2>
@@ -397,13 +397,13 @@ export default function DeploymentSection() {
 
                 <p className="text-2xl sm:text-3xl font-bold text-white leading-snug mb-6">
                   You control the{" "}
-                  <span className="bg-gradient-to-r from-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                  <span className="text-[color:var(--color-primary-soft)]">
                     brand
                   </span>
                   .
                   <br />
                   We protect the{" "}
-                  <span className="bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-primary-soft)] bg-clip-text text-transparent">
+                  <span className="text-[color:var(--color-accent)]">
                     platform
                   </span>
                   .
@@ -411,7 +411,7 @@ export default function DeploymentSection() {
 
                 <a
                   href="#contact"
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] text-white font-semibold shadow-xl shadow-[color:var(--color-primary)]/40 hover:shadow-[color:var(--color-primary)]/60 hover:scale-105 transition-all duration-300"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[color:var(--color-primary)] text-white font-semibold shadow-xl shadow-[color:var(--color-primary)]/40 hover:bg-[color:var(--color-primary-dark)] hover:shadow-[color:var(--color-primary)]/60 hover:scale-105 transition-all duration-300"
                 >
                   Get Started
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

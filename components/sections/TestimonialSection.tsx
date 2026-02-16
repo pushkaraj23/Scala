@@ -787,7 +787,7 @@ export default function TestimonialSection() {
 
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[color:var(--color-foreground)] mb-6">
                         What Our{" "}
-                        <span className="bg-gradient-to-l from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                        <span className="text-[color:var(--color-primary-soft)]">
                             Clients Say
                         </span>
                     </h2>

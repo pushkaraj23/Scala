@@ -44,7 +44,7 @@ export default function VideoSection() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[color:var(--color-foreground)]">
                 See how Scala
                 <br />
-                <span className="bg-gradient-to-r from-[color:var(--color-primary)] to-[color:var(--color-accent)] bg-clip-text text-transparent">
+                <span className="text-[color:var(--color-primary-soft)]">
                   runs your distribution
                 </span>
               </h2>

@@ -7,11 +7,6 @@ import {
     Sparkles,
     Users,
     Award,
-    Rocket,
-    Heart,
-    Shield,
-    Zap,
-    Globe,
     TrendingUp,
     CheckCircle,
     ArrowRight,
@@ -23,6 +18,11 @@ import {
     Calendar,
     ChevronRight,
     User,
+    Rocket,
+    Shield,
+    Heart,
+    Zap,
+    Globe,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,49 +94,43 @@ const stats = [
     { value: "25+", label: "Team Members", icon: Users },
 ];
 
-// Values Data
+// Values Data (lucide – consistent with rest of site)
 const values = [
     {
         icon: Rocket,
         title: "Innovation",
         description:
             "We constantly push boundaries and embrace cutting-edge technologies to deliver exceptional solutions.",
-        gradient: "from-[color:var(--color-primary)] to-[color:var(--color-primary-soft)]",
     },
     {
         icon: Shield,
         title: "Integrity",
         description:
             "We build trust through transparency, honesty, and ethical practices in everything we do.",
-        gradient: "from-[color:var(--color-accent)] to-[color:var(--color-accent-dark)]",
     },
     {
         icon: Heart,
         title: "Passion",
         description:
             "Our love for what we do drives us to exceed expectations and create meaningful impact.",
-        gradient: "from-[color:var(--color-primary-soft)] to-[color:var(--color-primary)]",
     },
     {
         icon: Users,
         title: "Collaboration",
         description:
             "We believe in the power of teamwork and partnership to achieve extraordinary results.",
-        gradient: "from-[color:var(--color-surface-light)] to-[color:var(--color-surface)]",
     },
     {
         icon: Zap,
         title: "Excellence",
         description:
             "We strive for perfection in every project, delivering quality that speaks for itself.",
-        gradient: "from-[color:var(--color-primary)] to-[color:var(--color-accent)]",
     },
     {
         icon: Globe,
         title: "Global Vision",
         description:
             "We think globally while acting locally, creating solutions that transcend boundaries.",
-        gradient: "from-[color:var(--color-primary-soft)] to-[color:var(--color-accent)]",
     },
 ];
 
@@ -283,7 +277,7 @@ export default function AboutUs() {
                     >
                         We Build{" "}
                         <span className="relative">
-                            <span className="bg-gradient-to-r from-[color:var(--color-primary)] via-[color:var(--color-primary-soft)] to-[color:var(--color-primary)] bg-clip-text text-transparent">
+                            <span className="text-[color:var(--color-primary-soft)]">
                                 Digital Dreams
                             </span>
                             <motion.span
@@ -335,7 +329,7 @@ export default function AboutUs() {
                                         whileInView={{ opacity: 1, scale: 1 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                                        className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[color:var(--color-foreground)] to-[color:var(--color-text-secondary)] bg-clip-text text-transparent mb-2"
+                                        className="text-4xl sm:text-5xl font-bold text-[color:var(--color-foreground)] mb-2"
                                     >
                                         {stat.value}
                                     </motion.div>
@@ -503,16 +497,16 @@ export default function AboutUs() {
                                 className="group relative"
                             >
                                 <div
-                                    className={`absolute inset-0 bg-gradient-to-br ${value.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`}
+                                    className="absolute inset-0 bg-[color:var(--color-primary)]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
                                 />
                                 <div className="relative h-full bg-[color:var(--color-accent-dark)]/80 backdrop-blur-xl border border-[color:var(--color-border)] rounded-2xl p-6 hover:border-[color:var(--color-primary)]/60 transition-all duration-300 group">
 
                                     {/* Icon + Title Row */}
                                     <div className="flex items-center gap-4 mb-4">
                                         <div
-                                            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.gradient} flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300`}
+                                            className="w-14 h-14 rounded-xl bg-[color:var(--color-primary)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300"
                                         >
-                                            <value.icon className="w-7 h-7 text-[color:var(--color-accent-dark)]" />
+                                            <value.icon className="w-7 h-7 text-white" />
                                         </div>
 
                                         <h3 className="text-xl font-bold">
@@ -598,9 +592,9 @@ export default function AboutUs() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[color:var(--color-primary)]/10 border border-[color:var(--color-primary)]/30 mb-4">
-                            <Users className="w-4 h-4 text-[color:var(--color-primary-soft)]" />
-                            <span className="text-sm font-medium text-[color:var(--color-primary-soft)]">The People Behind</span>
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground border-foreground/30 mb-4">
+                            <Users className="w-4 h-4 text-primary-dark" />
+                            <span className="text-sm font-medium text-primary-dark">The People Behind</span>
                         </span>
                         <h2 className="text-4xl sm:text-5xl font-bold mb-4">Meet Our Team</h2>
                         <p className="text-xl text-[color:var(--color-text-secondary)] max-w-2xl mx-auto">
