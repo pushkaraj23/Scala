@@ -1,3 +1,4 @@
+import { getGalleryImages } from "@/lib/gallery";
 import HeroSection from "@/components/sections/HeroSection";
 import ProblemSection from "@/components/sections/ProblemSection";
 import CustomerDilemma from "@/components/sections/CustomerDilemma";
@@ -17,6 +18,8 @@ import IntegrationsSection from "@/components/sections/IntegrationsSection";
 import FAQSection from "@/components/sections/FAQSection";
 
 export default function Home() {
+  const galleryImages = getGalleryImages();
+
   return (
     <>
       <HeroSection />
@@ -31,7 +34,7 @@ export default function Home() {
       <IntegrationsSection />
       <DeploymentSection />
       <TestimonialSection />
-      <GalleryPage />
+      <GalleryPage images={galleryImages} />
       <AboutUs />
       <FAQSection />
       <ContactSection />
